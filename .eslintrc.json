@@ -1,0 +1,47 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.base.json"
+  },
+  "plugins": ["@nx", "rxjs"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.js"],
+      "rules": {
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "banTransitiveDependencies": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts"],
+      "extends": ["plugin:@nx/typescript", "prettier"],
+      "rules": {
+        "rxjs/no-async-subscribe": "error",
+        "rxjs/no-nested-subscribe": "error",
+        "rxjs/throw-error": "error",
+        "rxjs/no-unsafe-takeuntil": "error",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "lines-between-class-members": ["error", "always"]
+      }
+    },
+    {
+      "files": ["*.js"],
+      "extends": ["plugin:@nx/javascript"],
+      "rules": {}
+    }
+  ]
+}

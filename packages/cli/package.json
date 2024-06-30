@@ -1,0 +1,36 @@
+{
+  "name": "@socktrader/cli",
+  "version": "2.0.3",
+  "description": "SockTrader cli is an easy to use cli wrapper around SockTrader core",
+  "homepage": "https://github.com/SockTrader/SockTrader.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SockTrader/SockTrader.git"
+  },
+  "bin": {
+    "socktrader": "./src/index.js"
+  },
+  "license": "GPL-3.0",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "tradingbot",
+    "algorithmic-trading",
+    "cryptocurrencies",
+    "binance",
+    "trading-algorithms",
+    "trading-bot",
+    "indicators",
+    "cli",
+    "quantitative",
+    "finance",
+    "financial",
+    "analysis",
+    "statistics",
+    "trading",
+    "crypto",
+    "bitcoin"
+  ]
+}

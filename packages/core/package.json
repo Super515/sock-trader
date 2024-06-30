@@ -1,0 +1,31 @@
+{
+  "name": "@socktrader/core",
+  "version": "2.0.3",
+  "description": "SockTrader core is a realtime websocket based trading bot framework focused on trading cryptocurrencies",
+  "homepage": "https://github.com/SockTrader/SockTrader.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SockTrader/SockTrader.git"
+  },
+  "license": "GPL-3.0",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "tradingbot",
+    "algorithmic-trading",
+    "cryptocurrencies",
+    "binance",
+    "trading-algorithms",
+    "trading-bot",
+    "quantitative",
+    "finance",
+    "financial",
+    "analysis",
+    "statistics",
+    "trading",
+    "crypto",
+    "bitcoin"
+  ]
+}

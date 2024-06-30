@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@socktrader/cli": ["packages/cli/src/index.ts"],
+      "@socktrader/core": ["packages/core/src/index.ts"],
+      "@socktrader/indicators": ["packages/indicators/src/index.ts"],
+      "@socktrader/web": ["packages/web/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

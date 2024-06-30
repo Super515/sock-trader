@@ -1,0 +1,60 @@
+{
+  "name": "cli",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/cli/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/cli",
+        "tsConfig": "packages/cli/tsconfig.lib.json",
+        "packageJson": "packages/cli/package.json",
+        "main": "packages/cli/src/index.ts",
+        "assets": ["packages/cli/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/cli/**/*.ts"],
+        "fix": true
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/cli"],
+      "options": {
+        "jestConfig": "packages/cli/jest.config.ts",
+        "passWithNoTests": true,
+        "codeCoverage": false
+      },
+      "configurations": {
+        "coverage": {
+          "codeCoverage": true
+        }
+      }
+    },
+    "pre-release": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "./",
+        "parallel": true,
+        "commands": [
+          "cd packages/cli && npm version {args.version} --allow-same-version",
+          "cd dist/packages/cli && npm version {args.version} --allow-same-version"
+        ]
+      }
+    },
+    "release": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "./",
+        "commands": ["cd dist/packages/cli && npm publish --access public"]
+      }
+    }
+  },
+  "tags": []
+}

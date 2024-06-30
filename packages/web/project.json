@@ -1,0 +1,60 @@
+{
+  "name": "web",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/web/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/web",
+        "tsConfig": "packages/web/tsconfig.lib.json",
+        "packageJson": "packages/web/package.json",
+        "main": "packages/web/src/index.ts",
+        "assets": ["packages/web/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/web/**/*.ts"],
+        "fix": true
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/web"],
+      "options": {
+        "jestConfig": "packages/web/jest.config.ts",
+        "passWithNoTests": true,
+        "codeCoverage": false
+      },
+      "configurations": {
+        "coverage": {
+          "codeCoverage": true
+        }
+      }
+    },
+    "pre-release": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "./",
+        "parallel": true,
+        "commands": [
+          "cd packages/web && npm version {args.version} --allow-same-version",
+          "cd dist/packages/web && npm version {args.version} --allow-same-version"
+        ]
+      }
+    },
+    "release": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "./",
+        "commands": ["cd dist/packages/web && npm publish --access public"]
+      }
+    }
+  },
+  "tags": []
+}
